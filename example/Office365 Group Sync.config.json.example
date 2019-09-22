@@ -1,0 +1,55 @@
+{
+	"TenantPrefix" : "contoso",
+	"GlobalGroups" : [
+				"Executives"
+			],
+	"GlobalUsers" : "SysAdmin@contoso.com",
+	"Mappings": [
+		{
+			"Parent": "Board Information",
+			"ChildGroups" : [
+				"Executives"
+			],
+			"ChildUsers" : [
+				"ExecutiveAssistant@contoso.com"
+			]
+		},
+		{
+			"Parent": "Clients",
+			"ChildGroups" : [
+				"Finance Team",
+				"Sales Team"
+			]
+		},
+		{
+			"Parent": "Design Files",
+			"ChildGroups" : [
+				"Marketing Team"
+			]
+		},
+		{
+			"Parent": "Management",
+			"ChildGroups" : [
+				"Managers"
+			],
+			"ChildUsers" : [
+				"ExecutiveAssistant@contoso.com"
+			]
+		},
+		{
+			"Parent": "Promotions",
+			"ChildGroups" : [
+				"All Users"
+			]
+		},
+		{
+			"Parent": "Suppliers",
+			"ChildGroups" : [
+				"Finance Team"
+			],
+			"ChildUsers" : [
+				"SalesManager@contoso.com"
+			]
+		}
+	]
+}
