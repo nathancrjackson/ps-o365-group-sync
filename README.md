@@ -8,6 +8,25 @@ Unlike earlier types of groups the new Office 365 group type does not allow for 
 
 This utility takes in which users and groups are mapped to your Office 365 group (defined in a JSON format), compiles those mappings into a flat user membership list and compares that list to the current membership of the Office 365 group. If you choose to the script can then update the current membership to match the generated membership.
 
+## Use cases
+
+The following are some possible use cases for this utility:
+- Initial configuration of Office 365 groups.
+- Having a rough security baseline for who should be members of Office 365 groups and tracking deviations from it.
+- Enforcing strict membership for Office 365 groups*.
+
+\* Not recommended
+
+## Considerations
+
+Please consider the following if you are going to use this utility in your tenant:
+- **The utility is to be used at your own risk.**
+- It appears to sometimes take a few minutes for changes made in the Azure AD portal to be available via PowerShell.
+- The utility currently loads all users and groups from the Azure AD before verification. This works fine in the 100 user enviroment the script is tested with but may not scale that well.
+- If you would like to use this utility to enforce strict membership it must be run after every change you make to the Azure AD that may affect Office 365 group membership.
+- Office 365 groups being members of other Office 365 groups is not supported and has not been tested.
+- Security groups that have dynamic membership enabled may also cause issues depending on you use case.
+
 ## Parameters
 
 ```
@@ -192,4 +211,6 @@ The following is a list of possible features in future updates:
 - Support for Azure Contexts.
 - New parameter -ForceNonInteractive to ensure utility won't halt when run as a task.
 - New parameter -Reconnect to force reconnection each time script run. Currently the script will use current authentication before trying provided credentials. Provided -Disconnect is $TRUE and you let the script finish this is already done.
+- New parameter -LoadDataAsRequired to load data from Azure AD only as required. The utility currently pulls all users and all groups from the Azure AD before verification process.
 - Deny Groups and Users at both the Global and Child level.
+- An additional output file that details only changes to commit or that have been commited.
